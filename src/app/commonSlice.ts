@@ -1,12 +1,20 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import {currenciesType} from "../components/BaseСurrency/BaseСurrency.props";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface stateType {
 	baseCurrency: string
+	currencies: currenciesType[]
 }
 
+
 const initialState: stateType = {
-	baseCurrency: '',
+	baseCurrency: "810",
+	currencies: [
+		{value: "840", name:"USD"},
+		{value: "810", name:"RUB"},
+		{value: "978", name:"EUR"},
+	]
 }
 
 export const commonSlice = createSlice({
@@ -19,4 +27,4 @@ export const commonSlice = createSlice({
 	}
 })
 
-export default commonSlice.reducer;
+export default commonSlice.reducer

@@ -1,10 +1,12 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import {configureStore, ThunkAction, Action, getDefaultMiddleware} from '@reduxjs/toolkit';
 import commonReducer from './commonSlice';
 
 export const store = configureStore({
   reducer: {
     rate: commonReducer,
   },
+  middleware: getDefaultMiddleware(),
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export type AppDispatch = typeof store.dispatch;

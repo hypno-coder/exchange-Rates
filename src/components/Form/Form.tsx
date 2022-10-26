@@ -17,18 +17,18 @@ const Form = ({ getCurrency }: FormProps): JSX.Element => {
 		setCurrency({...currency, amountOfCurrency: event.target.value})
 	}, [setCurrency, currency])
 
-	const firstAreaHandleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+	const fromAreaHandleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
 		setCurrency({...currency, fromArea: e.target.value})
 	}, [setCurrency, currency])
 
-	const secondAreaHandleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+	const toAreaHandleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
 		setCurrency({...currency, toArea: e.target.value})
 	}, [setCurrency, currency])
 
 	return (
 			<form>
 				<input value={currency.amountOfCurrency} onChange={amountOfCurrencyHandleChange} type="number" name="name" />
-				<select value={currency.fromArea} onChange={firstAreaHandleChange}>
+				<select value={currency.fromArea} onChange={fromAreaHandleChange}>
 					{
 						[...currencies]
 								.sort(
@@ -39,7 +39,7 @@ const Form = ({ getCurrency }: FormProps): JSX.Element => {
 					}
 				</select>
 				<input type="button" value=" < > "/>
-				<select value={currency.toArea} onChange={secondAreaHandleChange}>
+				<select value={currency.toArea} onChange={toAreaHandleChange}>
 					{currencies.map((elem) => <Option value={elem.value} name={elem.name} />)}
 				</select>
 				<input type="submit" value="Submit" />

@@ -1,29 +1,36 @@
-import React, {useEffect} from "react";
-import {useActions} from "../../app/hooks";
+import React from "react";
+import {useAppSelector} from "../../app/hooks";
 import Form from "../../components/Form/Form";
-import { useAppSelector } from "../../app/hooks";
 import BaseСurrency from "../../components/BaseСurrency/BaseСurrency";
 
-function pickCurrency(): string {
-	let lang: string = window.navigator.language;
-	if(lang === "ru-RU"){
-		return "810"
-	}else{
-		return "840"
-	}
-}
 
 const Сonverter = (): JSX.Element => {
-	const { setBaseCurrency } = useActions()
-	const { currencies } = useAppSelector((state) => state.rate)
-	const getCurrency = (code: string) => {
-		let currency = currencies.filter(elem => elem.value === code)
-		return currency[0].name
+	const { currencies, error, convertData, isLoading } = useAppSelector(state => ({
+		currencies: state.commonReducer.currencies,
+		isLoading: state.convertReducer.isLoading,
+		convertData: state.convertReducer.convertData,
+		error: state.convertReducer.error,
+	}))
+
+	let content
+	if(convertData){
+		content = (
+				<div>{convertData.result}</div>
+		)
+	}if(isLoading){
+		content = (
+				<div>идет загрузка...</div>
+		)
+	}if(error){
+		content = (
+				<div>произошла ошибка: {error}</div>
+		)
 	}
 
-	useEffect(() => {
-		setBaseCurrency(pickCurrency())
-	}, [])
+	const getCurrency = (code: string) => {
+		let currency = currencies.filter(elem => elem.value === code)
+		return currency[0]?.name
+	}
 
 	return (
 			<>
@@ -32,6 +39,9 @@ const Сonverter = (): JSX.Element => {
 				</div>
 				<div className="styles.converterCurrency">
 					<Form getCurrency={getCurrency} />
+				</div>
+				<div>
+					{content}
 				</div>
 			</>
 	);

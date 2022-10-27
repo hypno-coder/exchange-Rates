@@ -1,6 +1,6 @@
 import React from "react";
 import {useAppSelector, useActions} from "../../app/hooks";
-import styles from './BaseСurrency.module.css';
+import styles from './BaseCurrency.module.css';
 
 
 function pickCurrency(): string {

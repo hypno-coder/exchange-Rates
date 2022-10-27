@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import { DataToConvertType } from '../components/Form/Form.props'
+import { DataToConvertType } from './apiType'
 import {ConvertResponseType} from "./apiType";
 import axios from "axios";
 

@@ -7,13 +7,12 @@ interface stateType {
 	currencies: currenciesType[]
 }
 
-
 const initialState: stateType = {
 	baseCurrency: "",
 	currencies: [
-		{value: "840", name:"USD"},
-		{value: "810", name:"RUB"},
-		{value: "978", name:"EUR"},
+		{value: "USD",},
+		{value: "RUB"},
+		{value: "EUR"},
 	]
 }
 

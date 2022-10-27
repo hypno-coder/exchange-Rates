@@ -1,12 +1,11 @@
 import React, {useState,useEffect, useCallback} from "react";
-import { FormProps } from "./Form.props"
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {fetchConvert} from "../../app/ActionCreators";
 
 
-const Form = ({getCurrency}: FormProps): JSX.Element => {
+const Form = (): JSX.Element => {
 	const dispatch = useAppDispatch()
-	const { baseCurrency, currencies } = useAppSelector((state) => state.commonReducer)
+	const {baseCurrency, currencies} = useAppSelector((state) => state.commonReducer)
 	const [amountData, setAmountData] = useState('')
 	const [fromCurrency, setFromCurrency] = useState('')
 	const [toCurrency, setToCurrency] = useState('')
@@ -24,7 +23,16 @@ const Form = ({getCurrency}: FormProps): JSX.Element => {
 	}, [setToCurrency])
 
 	const ConvertHandleButton = (event: React.MouseEvent<HTMLInputElement>) => {
-		dispatch(fetchConvert({to: getCurrency(toCurrency), from: getCurrency(fromCurrency), amount: amountData}))
+		console.log("sdfg")
+		console.log(fromCurrency)
+		console.log(toCurrency)
+		console.log(amountData)
+		console.log("sdfg")
+		dispatch(fetchConvert({
+			to: toCurrency,
+			from: fromCurrency,
+			amount: amountData,
+		}))
 		event.preventDefault()
 	}
 
@@ -35,7 +43,7 @@ const Form = ({getCurrency}: FormProps): JSX.Element => {
 	}
 
 	useEffect(() => {
-		setFromCurrency(getCurrency(baseCurrency))
+		setFromCurrency(baseCurrency)
 		setToCurrency('USD')
 	}, [])
 
@@ -43,18 +51,11 @@ const Form = ({getCurrency}: FormProps): JSX.Element => {
 			<form>
 				<input value={amountData} onChange={amountOfCurrencyHandleChange} type="number" name="name" />
 				<select value={fromCurrency} onChange={fromAreaHandleChange}>
-					{
-						[...currencies]
-								.sort(
-										function(x,y){
-											return x.name === getCurrency(baseCurrency) ? -1 : y.name === getCurrency(baseCurrency) ? 1 : 0;
-										})
-								.map((elem) => <option key={elem.value} value={elem.value}>{elem.name}</option>)
-					}
+					{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
 				</select>
 				<input type="button" onClick={SwapСurrenciesHandleButton} value=" < > "/>
 				<select value={toCurrency} onChange={toAreaHandleChange}>
-					{currencies.map((elem) => <option key={elem.value} value={elem.value} >{elem.name}</option>)}
+					{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
 				</select>
 				<input onClick={ConvertHandleButton} type="submit" value="Конвертировать" />
 			</form>

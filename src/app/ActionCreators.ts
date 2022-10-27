@@ -12,6 +12,7 @@ export const fetchConvert = createAsyncThunk(
 			}
 			try {
 				const response = await axios<ConvertResponseType>(url, {headers: Headers})
+				console.log(response.data)
 				return await response.data
 			} catch (e) {
 				return thunkAPI.rejectWithValue('не удалось посчитать курс валют')

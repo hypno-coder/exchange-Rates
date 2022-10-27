@@ -1,12 +1,12 @@
 import React from "react";
+import styles from './Сonverter.module.css'
 import {useAppSelector} from "../../app/hooks";
 import Form from "../../components/Form/Form";
 import BaseСurrency from "../../components/BaseСurrency/BaseСurrency";
 
 
 const Сonverter = (): JSX.Element => {
-	const { currencies, error, convertData, isLoading } = useAppSelector(state => ({
-		currencies: state.commonReducer.currencies,
+	const { error, convertData, isLoading } = useAppSelector(state => ({
 		isLoading: state.convertReducer.isLoading,
 		convertData: state.convertReducer.convertData,
 		error: state.convertReducer.error,
@@ -27,23 +27,18 @@ const Сonverter = (): JSX.Element => {
 		)
 	}
 
-	const getCurrency = (code: string) => {
-		let currency = currencies.filter(elem => elem.value === code)
-		return currency[0]?.name
-	}
-
 	return (
-			<>
-				<div>
-					<BaseСurrency currencies={currencies} getCurrency={getCurrency}/>
-				</div>
-				<div className="styles.converterCurrency">
-					<Form getCurrency={getCurrency} />
-				</div>
-				<div>
+			<div className={styles.convertWrapper}>
+				<section className={styles.baseCurrencyWrapper}>
+					<BaseСurrency/>
+				</section>
+				<section className={styles.formWrapper}>
+					<Form />
+				</section>
+				<section className={styles.resultWrapper}>
 					{content}
-				</div>
-			</>
+				</section>
+			</div>
 	);
 };
 

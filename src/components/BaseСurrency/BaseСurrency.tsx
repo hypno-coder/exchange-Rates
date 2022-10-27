@@ -1,5 +1,4 @@
 import React from "react";
-import {BaseСurrencyProps} from "./BaseСurrency.props";
 import {useAppSelector, useActions} from "../../app/hooks";
 import styles from './BaseСurrency.module.css';
 
@@ -7,16 +6,15 @@ import styles from './BaseСurrency.module.css';
 function pickCurrency(): string {
 	let lang: string = window.navigator.language;
 	if(lang! === "ru-RU"){
-		return "810"
+		return "RUB"
 	}else{
-		return "840"
+		return "USD"
 	}
 }
 
-const BaseСurrency = ({ currencies, getCurrency }: BaseСurrencyProps): JSX.Element => {
+const BaseСurrency = (): JSX.Element => {
 	const { setBaseCurrency } = useActions()
-	const { baseCurrency } = useAppSelector(state => state.commonReducer)
-
+	const { baseCurrency, currencies } = useAppSelector(state => state.commonReducer)
 	const handlerChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		sessionStorage.setItem("baseCurrency", e.target.value)
 		setBaseCurrency(e.target.value)
@@ -28,17 +26,9 @@ const BaseСurrency = ({ currencies, getCurrency }: BaseСurrencyProps): JSX.Ele
 				<form className={styles.arg}>
 					<label>
 						Базовая Валюта:
-						<select value={getCurrency(baseCurrency)} onChange={handlerChange}>
-							{
-								[...currencies]
-										.sort(
-												function(x,y){
-													return x.name === getCurrency(baseCurrency) ? -1 : y.name === getCurrency(baseCurrency) ? 1 : 0;
-												})
-										.map((elem) => <option key={elem.value} value={elem.value} >{elem.name}</option>)
-							}
+						<select value={baseCurrency} onChange={handlerChange}>
+							{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
 						</select>
-
 					</label>
 				</form>
 	);

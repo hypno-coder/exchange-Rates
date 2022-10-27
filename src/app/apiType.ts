@@ -1,4 +1,8 @@
-import { DataToConvertType } from "../components/Form/Form.props";
+export interface DataToConvertType {
+	to: string
+	from: string
+	amount: string
+}
 
 interface Info {
 	rate: number;

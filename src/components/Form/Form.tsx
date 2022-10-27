@@ -23,11 +23,6 @@ const Form = (): JSX.Element => {
 	}, [setToCurrency])
 
 	const ConvertHandleButton = (event: React.MouseEvent<HTMLInputElement>) => {
-		console.log("sdfg")
-		console.log(fromCurrency)
-		console.log(toCurrency)
-		console.log(amountData)
-		console.log("sdfg")
 		dispatch(fetchConvert({
 			to: toCurrency,
 			from: fromCurrency,

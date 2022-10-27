@@ -1,48 +1,62 @@
-import React, {useState, useCallback} from "react";
-import Option from "../Option/Option";
-import {FormProps} from "./Form.props";
-import { useAppSelector } from "../../app/hooks";
+import React, {useState,useEffect, useCallback} from "react";
+import { FormProps } from "./Form.props"
+import {useAppDispatch, useAppSelector} from "../../app/hooks";
+import {fetchConvert} from "../../app/ActionCreators";
 
 
-const Form = ({ getCurrency }: FormProps): JSX.Element => {
-	const { baseCurrency, currencies } = useAppSelector((state) => state.rate)
-
-	const [currency, setCurrency] = useState({
-		amountOfCurrency: '',
-		fromArea: '',
-		toArea: '',
-	})
+const Form = ({getCurrency}: FormProps): JSX.Element => {
+	const dispatch = useAppDispatch()
+	const { baseCurrency, currencies } = useAppSelector((state) => state.commonReducer)
+	const [amountData, setAmountData] = useState('')
+	const [fromCurrency, setFromCurrency] = useState('')
+	const [toCurrency, setToCurrency] = useState('')
 
 	const amountOfCurrencyHandleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-		setCurrency({...currency, amountOfCurrency: event.target.value})
-	}, [setCurrency, currency])
+		setAmountData(event.target.value)
+	}, [setAmountData])
 
-	const fromAreaHandleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-		setCurrency({...currency, fromArea: e.target.value})
-	}, [setCurrency, currency])
+	const fromAreaHandleChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+		setFromCurrency(event.target.value)
+	}, [setFromCurrency])
 
-	const toAreaHandleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-		setCurrency({...currency, toArea: e.target.value})
-	}, [setCurrency, currency])
+	const toAreaHandleChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+		setToCurrency(event.target.value)
+	}, [setToCurrency])
+
+	const ConvertHandleButton = (event: React.MouseEvent<HTMLInputElement>) => {
+		dispatch(fetchConvert({to: getCurrency(toCurrency), from: getCurrency(fromCurrency), amount: amountData}))
+		event.preventDefault()
+	}
+
+	const SwapСurrenciesHandleButton = (event: React.MouseEvent<HTMLInputElement>) => {
+		setFromCurrency(toCurrency)
+		setToCurrency(fromCurrency)
+		event.preventDefault()
+	}
+
+	useEffect(() => {
+		setFromCurrency(getCurrency(baseCurrency))
+		setToCurrency('USD')
+	}, [])
 
 	return (
 			<form>
-				<input value={currency.amountOfCurrency} onChange={amountOfCurrencyHandleChange} type="number" name="name" />
-				<select value={currency.fromArea} onChange={fromAreaHandleChange}>
+				<input value={amountData} onChange={amountOfCurrencyHandleChange} type="number" name="name" />
+				<select value={fromCurrency} onChange={fromAreaHandleChange}>
 					{
 						[...currencies]
 								.sort(
 										function(x,y){
 											return x.name === getCurrency(baseCurrency) ? -1 : y.name === getCurrency(baseCurrency) ? 1 : 0;
 										})
-								.map((elem) => <Option value={elem.value} name={elem.name} />)
+								.map((elem) => <option key={elem.value} value={elem.value}>{elem.name}</option>)
 					}
 				</select>
-				<input type="button" value=" < > "/>
-				<select value={currency.toArea} onChange={toAreaHandleChange}>
-					{currencies.map((elem) => <Option value={elem.value} name={elem.name} />)}
+				<input type="button" onClick={SwapСurrenciesHandleButton} value=" < > "/>
+				<select value={toCurrency} onChange={toAreaHandleChange}>
+					{currencies.map((elem) => <option key={elem.value} value={elem.value} >{elem.name}</option>)}
 				</select>
-				<input type="submit" value="Submit" />
+				<input onClick={ConvertHandleButton} type="submit" value="Конвертировать" />
 			</form>
 	);
 };

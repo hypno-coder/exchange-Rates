@@ -1,10 +1,15 @@
-import {configureStore, ThunkAction, Action, getDefaultMiddleware} from '@reduxjs/toolkit';
+import {combineReducers ,configureStore, ThunkAction, Action, getDefaultMiddleware} from '@reduxjs/toolkit';
 import commonReducer from './commonSlice';
+import  convertReducer from './convertSlice';
+
+
+export const RootReducer = combineReducers({
+  commonReducer,
+  convertReducer,
+})
 
 export const store = configureStore({
-  reducer: {
-    rate: commonReducer,
-  },
+  reducer: RootReducer,
   middleware: getDefaultMiddleware(),
   devTools: process.env.NODE_ENV !== 'production',
 });

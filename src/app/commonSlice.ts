@@ -9,7 +9,7 @@ interface stateType {
 
 
 const initialState: stateType = {
-	baseCurrency: "810",
+	baseCurrency: "",
 	currencies: [
 		{value: "840", name:"USD"},
 		{value: "810", name:"RUB"},

@@ -1,9 +1,10 @@
 import React from 'react';
+import Converter from './pages/Сonverter/Сonverter'
+import './App.css'
 import {
   Routes,
   Route,
 } from "react-router-dom";
-import Converter from './pages/Сonverter/Сonverter'
 
 function App() {
   return (

@@ -1,0 +1,36 @@
+.formWrapper {
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    height: 30vh;
+}
+.inputCurrency {
+    width: 15vw;
+    height: 8vh;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px black solid;
+}
+
+.currencyStyle {
+    margin: 0 2vw;
+    outline: 1px black solid;
+    border-radius: 10px;
+    height: 8vh;
+}
+
+.swapButton {
+    width: 5vw;
+}
+.swapButton:hover {
+    font-weight: 700;
+}
+.convertButton {
+    padding: 10px;
+}
+.convertButton:hover {
+    outline: none;
+    background-color: #927E77;
+}

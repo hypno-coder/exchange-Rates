@@ -5,10 +5,10 @@ import axios from "axios";
 
 export const fetchConvert = createAsyncThunk(
 		'convert/fetch',
-		async (data: DataToConvertType, thunkAPI) => {
-			const url: string = `https://api.apilayer.com/fixer/convert?to=${data.to}&from=${data.from}&amount=${data.amount}`
+		async ({to, from, amount = "0"}: DataToConvertType, thunkAPI) => {
+			const url: string = `https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`
 			const Headers = {
-				'apikey': 'LA4s8I40YhtSKt0erk2N7b3N5S06LTvl'
+				'apikey': '1cc8VwunRVQu6U2o4QWu8CpoD5tCxiZ1'
 			}
 			try {
 				const response = await axios<ConvertResponseType>(url, {headers: Headers})

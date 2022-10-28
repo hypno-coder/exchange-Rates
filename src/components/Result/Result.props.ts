@@ -1,4 +1,5 @@
+import {ConvertResponseType} from "../../app/apiType";
+
 export interface ResultProps {
-	arg1: string;
-	arg2: string;
+	convertData: ConvertResponseType;
 }

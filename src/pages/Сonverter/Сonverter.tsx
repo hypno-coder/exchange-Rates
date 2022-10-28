@@ -1,8 +1,11 @@
 import React from "react";
-import styles from './Сonverter.module.css'
 import {useAppSelector} from "../../app/hooks";
 import Form from "../../components/Form/Form";
+import Spinner from "../../components/Spinner/Spinner";
 import BaseСurrency from "../../components/BaseСurrency/BaseСurrency";
+import styles from './Сonverter.module.css'
+import CN from "classnames";
+import Result from "../../components/Result/Result";
 
 
 const Сonverter = (): JSX.Element => {
@@ -14,28 +17,22 @@ const Сonverter = (): JSX.Element => {
 
 	let content
 	if(convertData){
-		content = (
-				<div>{convertData.result}</div>
-		)
+		content = <Result convertData={convertData}/>
 	}if(isLoading){
-		content = (
-				<div>идет загрузка...</div>
-		)
+		content = <Spinner/>
 	}if(error){
-		content = (
-				<div>произошла ошибка: {error}</div>
-		)
+		content = <p>{error}</p>
 	}
 
 	return (
-			<div className={styles.convertWrapper}>
+			<div className={styles.convertPageWrapper}>
 				<section className={styles.baseCurrencyWrapper}>
 					<BaseСurrency/>
 				</section>
-				<section className={styles.formWrapper}>
+				<section className={CN(styles.formWrapper, {[styles.extendContentField]: content})}>
 					<Form />
 				</section>
-				<section className={styles.resultWrapper}>
+				<section className={CN(styles.resultWrapper, {[styles.contentDisplay]: !content})}>
 					{content}
 				</section>
 			</div>

@@ -1,7 +1,8 @@
 import React, {useState,useEffect, useCallback} from "react";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {fetchConvert} from "../../app/ActionCreators";
-
+import styles from './Form.module.css'
+import CN from "classnames";
 
 const Form = (): JSX.Element => {
 	const dispatch = useAppDispatch()
@@ -23,11 +24,15 @@ const Form = (): JSX.Element => {
 	}, [setToCurrency])
 
 	const ConvertHandleButton = (event: React.MouseEvent<HTMLInputElement>) => {
-		dispatch(fetchConvert({
-			to: toCurrency,
-			from: fromCurrency,
-			amount: amountData,
-		}))
+		if(amountData === ''){
+			alert('укажите сумму')
+		}else {
+			dispatch(fetchConvert({
+				to: toCurrency,
+				from: fromCurrency,
+				amount: amountData,
+			}))
+		}
 		event.preventDefault()
 	}
 
@@ -43,17 +48,19 @@ const Form = (): JSX.Element => {
 	}, [])
 
 	return (
-			<form>
-				<input value={amountData} onChange={amountOfCurrencyHandleChange} type="number" name="name" />
-				<select value={fromCurrency} onChange={fromAreaHandleChange}>
-					{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
-				</select>
-				<input type="button" onClick={SwapСurrenciesHandleButton} value=" < > "/>
-				<select value={toCurrency} onChange={toAreaHandleChange}>
-					{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
-				</select>
-				<input onClick={ConvertHandleButton} type="submit" value="Конвертировать" />
-			</form>
+			<section className={styles.formWrapper}>
+				<form>
+					<input className={styles.inputCurrency} value={amountData} onChange={amountOfCurrencyHandleChange} type="number" name="name" />
+					<select className={styles.currencyStyle} value={fromCurrency} onChange={fromAreaHandleChange}>
+						{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
+					</select>
+					<input className={styles.swapButton} type="button" onClick={SwapСurrenciesHandleButton} value=" < = > "/>
+					<select className={styles.currencyStyle} value={toCurrency} onChange={toAreaHandleChange}>
+						{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
+					</select>
+					<input className={CN(styles.currencyStyle, styles.convertButton)} onClick={ConvertHandleButton} type="submit" value="перевести" />
+				</form>
+			</section>
 	);
 };
 

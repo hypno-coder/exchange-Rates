@@ -23,13 +23,10 @@ const BaseСurrency = (): JSX.Element => {
 	lang ? setBaseCurrency(lang) : sessionStorage.setItem("baseCurrency", pickCurrency())
 
 	return (
-				<form className={styles.arg}>
-					<label>
-						Базовая Валюта:
+				<form className={styles.currencyForm}>
 						<select value={baseCurrency} onChange={handlerChange}>
 							{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
 						</select>
-					</label>
 				</form>
 	);
 };

@@ -2,7 +2,6 @@ import React from "react";
 import {useAppSelector} from "../../app/hooks";
 import Form from "../../components/Form/Form";
 import Spinner from "../../components/Spinner/Spinner";
-import BaseСurrency from "../../components/BaseСurrency/BaseСurrency";
 import styles from './Сonverter.module.css'
 import CN from "classnames";
 import Result from "../../components/Result/Result";
@@ -26,9 +25,6 @@ const Сonverter = (): JSX.Element => {
 
 	return (
 			<div className={styles.convertPageWrapper}>
-				<section className={styles.baseCurrencyWrapper}>
-					<BaseСurrency/>
-				</section>
 				<section className={CN(styles.formWrapper, {[styles.extendContentField]: content})}>
 					<Form />
 				</section>

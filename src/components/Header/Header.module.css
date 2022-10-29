@@ -1,0 +1,22 @@
+.header {
+    background-color: #927E77;
+    height: 60px;
+}
+
+.headerContentWrapper {
+    position: relative;
+}
+
+.navLinks {
+    padding: 20px 0 0 0;
+    position: absolute;
+    right: 30px;
+}
+
+.navLinks li{
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 0 10px;
+
+}
+

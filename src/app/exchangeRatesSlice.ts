@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchConvert } from "./ActionCreators";
-import { ConvertResponseType } from './apiType'
+import {fetchExchangeRates} from "./ActionCreators";
+import {CurrencyResponseType} from './apiType'
 
 
 interface exchangeRatesState {
-	exchangeRates: ConvertResponseType | null,
+	exchangeRates: CurrencyResponseType | null,
 	isLoading: boolean,
 	error: string,
 }
@@ -20,15 +20,15 @@ export const exchangeRatesSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: {
-		[fetchConvert.fulfilled.type]: (state, action: PayloadAction<ConvertResponseType>) => {
+		[fetchExchangeRates.fulfilled.type]: (state, action: PayloadAction<CurrencyResponseType>) => {
 			state.isLoading = false;
 			state.error = '';
 			state.exchangeRates = action.payload;
 		},
-		[fetchConvert.pending.type]: (state) => {
+		[fetchExchangeRates.pending.type]: (state) => {
 			state.isLoading = true
 		},
-		[fetchConvert.rejected.type]: (state, action: PayloadAction<string>) => {
+		[fetchExchangeRates.rejected.type]: (state, action: PayloadAction<string>) => {
 			state.isLoading = false;
 			state.error = action.payload;
 		},

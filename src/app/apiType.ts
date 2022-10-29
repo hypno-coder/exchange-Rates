@@ -16,3 +16,20 @@ export interface ConvertResponseType {
 	result: number;
 	success: boolean;
 }
+
+export interface DataCurrencyType {
+	requestData: string;
+	baseCurrency: string;
+}
+
+export interface Rates {
+	[key: string]: number;
+}
+
+export interface CurrencyResponseType {
+	base: string;
+	date: string;
+	rates: Rates;
+	success: boolean;
+	timestamp: number;
+}

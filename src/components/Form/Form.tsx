@@ -50,7 +50,8 @@ const Form = (): JSX.Element => {
 	return (
 			<section className={styles.formWrapper}>
 				<form>
-					<input className={styles.inputCurrency} value={amountData} onChange={amountOfCurrencyHandleChange} type="number" name="name" />
+					<input className={styles.inputCurrency} value={amountData}
+					       onChange={amountOfCurrencyHandleChange} type="number" name="name" />
 					<select className={styles.currencyStyle} value={fromCurrency} onChange={fromAreaHandleChange}>
 						{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
 					</select>
@@ -58,7 +59,8 @@ const Form = (): JSX.Element => {
 					<select className={styles.currencyStyle} value={toCurrency} onChange={toAreaHandleChange}>
 						{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
 					</select>
-					<input className={CN(styles.currencyStyle, styles.convertButton)} onClick={ConvertHandleButton} type="submit" value="перевести" />
+					<input className={CN(styles.currencyStyle, styles.convertButton)}
+					       onClick={ConvertHandleButton} type="submit" value="перевести" />
 				</form>
 			</section>
 	);

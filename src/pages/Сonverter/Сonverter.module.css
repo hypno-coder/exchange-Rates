@@ -7,6 +7,11 @@
     height: calc(100vh - 60px);
 }
 
+.convertPageWrapper h1 {
+    margin: 0 0 20px 0;
+    font-size: 2rem;
+}
+
 .convertWrapper{
     display: flex;
     justify-content: center;

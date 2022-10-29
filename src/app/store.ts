@@ -1,11 +1,13 @@
 import {combineReducers ,configureStore, ThunkAction, Action, getDefaultMiddleware} from '@reduxjs/toolkit';
 import commonReducer from './commonSlice';
 import  convertReducer from './convertSlice';
+import exchangeRatesReducer from "./exchangeRatesSlice";
 
 
 export const RootReducer = combineReducers({
   commonReducer,
   convertReducer,
+  exchangeRatesReducer,
 })
 
 export const store = configureStore({

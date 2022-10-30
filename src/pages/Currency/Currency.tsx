@@ -40,7 +40,7 @@ const Currency = (): JSX.Element => {
 
 
 	return (
-			<section className={styles.currencyRateWrapper}>
+			<section className={styles.currencyWrapper}>
 				<h1>Курсы валют на сегодня</h1>
 					{content}
 			</section>

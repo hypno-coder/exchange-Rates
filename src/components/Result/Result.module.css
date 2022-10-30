@@ -2,3 +2,10 @@
     font-size: 2rem;
     margin-right: 5px;
 }
+
+/* media for mobile */
+@media(max-width: 950px){
+    .result span{
+        font-size: 1.5rem;
+    }
+}

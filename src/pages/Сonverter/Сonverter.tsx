@@ -26,7 +26,7 @@ const Сonverter = (): JSX.Element => {
 	return (
 			<div className={styles.convertPageWrapper}>
 				<h1>Конвертер валют</h1>
-				<section className={CN(styles.formWrapper, {[styles.extendContentField]: content})}>
+				<section className={CN(styles.formWrapper, {[styles.extendFormWrapper]: content})}>
 					<Form />
 				</section>
 				<section className={CN(styles.resultWrapper, {[styles.contentDisplay]: !content})}>

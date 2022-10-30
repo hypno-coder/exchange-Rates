@@ -1,36 +1,47 @@
-.formWrapper {
+.currencyForm {
+    min-width: 350px;
     font-size: 1.8rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     width: 60vw;
     height: 30vh;
+    padding: 10px;
 }
-.inputCurrency {
+.amountCurrency {
     width: 15vw;
+    min-width: 150px;
     height: 8vh;
     padding: 15px;
     border-radius: 10px;
     border: 1px black solid;
 }
-
-.currencyStyle {
-    margin: 0 2vw;
+.currencyForm select {
     outline: 1px black solid;
     border-radius: 10px;
     height: 8vh;
+    margin: 10px;
 }
-
-.swapButton {
-    width: 5vw;
-}
-.swapButton:hover {
+.currencyForm input[type='button']:hover {
     font-weight: 700;
 }
 .convertButton {
+    min-width: 150px;
+    outline: 1px black solid;
+    height: 8vh;
+    border-radius: 10px;
     padding: 10px;
 }
 .convertButton:hover {
     outline: none;
     background-color: #927E77;
+}
+
+
+/* media for mobile */
+@media(max-width: 950px){
+    .currencyForm{
+        padding: 10px 0;
+        flex-direction: column;
+    }
 }

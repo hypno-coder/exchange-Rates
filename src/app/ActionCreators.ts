@@ -3,7 +3,7 @@ import {DataToConvertType, DataCurrencyType, CurrencyResponseType, ConvertRespon
 import axios from "axios";
 
 const Headers = {
-	'apikey': 'qOrAaCuiOrljLIW0qrMOAs9itJl2gYk9'
+	'apikey': 'aqxXlTS4ohBrAGsyx8kBiOCo8v9EnRhv'
 }
 
 export const fetchConvert = createAsyncThunk(

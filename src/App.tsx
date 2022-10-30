@@ -8,7 +8,7 @@ import Layout from "./components/Layout/Layout";
 function App() {
   return (
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/exchange-Rates" element={<Layout />}>
             <Route index element={<Currency />} />
             <Route path="converter" element={<Converter />} />
           </Route>

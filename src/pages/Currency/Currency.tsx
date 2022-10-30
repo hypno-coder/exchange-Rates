@@ -24,7 +24,7 @@ const Currency = (): JSX.Element => {
 		content = <>
 				{
 					currencyData.map(elem => (
-							<div className={styles.exchangeRatesWrapper}>
+							<div key={elem.value} className={styles.exchangeRatesWrapper}>
 								<div>{elem.value}</div>
 								<div>{elem.name}</div>
 								<div>{exchangeRates.rates[elem.value].toFixed(2)}</div>

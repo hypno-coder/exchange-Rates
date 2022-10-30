@@ -2,21 +2,30 @@
     background-color: #927E77;
     height: 60px;
 }
-
 .headerContentWrapper {
     position: relative;
 }
-
-.navLinks {
+.menu__box {
     padding: 20px 0 0 0;
     position: absolute;
     right: 30px;
 }
-
-.navLinks li{
+.menu__box li{
     text-transform: uppercase;
     display: inline-block;
     margin: 0 10px;
-
+}
+.menu__box li:hover {
+    text-decoration: underline;
 }
 
+
+/* media for mobile */
+@media(max-width: 450px){
+    .menu__box {
+        right: 10px;
+    }
+    .menu__box li {
+        font-size: 80%;
+    }
+}

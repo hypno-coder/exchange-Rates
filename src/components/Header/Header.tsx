@@ -7,10 +7,10 @@ const Header = (): JSX.Element => {
       <header className={styles.header}>
 	      <div className={styles.headerContentWrapper}>
 		      <BaseСurrency/>
-		      <ul className={styles.navLinks}>
-			      <li><Link to="converter">конвертер валют</Link></li>
-			      <li><Link to="/">курсы валют</Link></li>
-		      </ul>
+					<ul className={styles.menu__box}>
+						<li><Link className={styles.menu__item} to="converter">конвертер валют</Link></li>
+						<li><Link to="/">курсы валют</Link></li>
+					</ul>
 	      </div>
       </header>
 	);

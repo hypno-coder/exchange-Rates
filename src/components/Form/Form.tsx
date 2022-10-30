@@ -48,21 +48,21 @@ const Form = (): JSX.Element => {
 	}, [])
 
 	return (
-			<section className={styles.formWrapper}>
-				<form>
-					<input className={styles.inputCurrency} value={amountData}
+				<form className={styles.currencyForm}>
+					<input className={styles.amountCurrency} value={amountData}
 					       onChange={amountOfCurrencyHandleChange} type="number" name="name" />
-					<select className={styles.currencyStyle} value={fromCurrency} onChange={fromAreaHandleChange}>
+					<div>
+					<select value={fromCurrency} onChange={fromAreaHandleChange}>
 						{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
 					</select>
-					<input className={styles.swapButton} type="button" onClick={SwapСurrenciesHandleButton} value=" < = > "/>
-					<select className={styles.currencyStyle} value={toCurrency} onChange={toAreaHandleChange}>
+					<input type="button" onClick={SwapСurrenciesHandleButton} value="<=>" />
+					<select value={toCurrency} onChange={toAreaHandleChange}>
 						{[...currencies].map((elem) => <option key={elem.value} value={elem.value} >{elem.value}</option>)}
 					</select>
-					<input className={CN(styles.currencyStyle, styles.convertButton)}
+					</div>
+					<input className={styles.convertButton}
 					       onClick={ConvertHandleButton} type="submit" value="перевести" />
 				</form>
-			</section>
 	);
 };
 

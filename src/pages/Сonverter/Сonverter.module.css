@@ -12,13 +12,8 @@
     font-size: 2rem;
 }
 
-.convertWrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .formWrapper {
+    min-width: 350px;
     border-start-start-radius: 30px;
     border-start-end-radius: 30px;
 
@@ -29,13 +24,14 @@
     border-bottom: 2px solid #927E77;
     background-color: #ECF0F1;
 }
-.extendContentField {
+.extendFormWrapper {
     border-end-end-radius: 0;
     border-end-start-radius: 0;
     border-bottom: none;
 }
 
 .resultWrapper {
+    min-width: 350px;
     display: flex;
     justify-content: center;
     align-items: center;

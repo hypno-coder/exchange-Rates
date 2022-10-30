@@ -1,11 +1,11 @@
-.currencyRateWrapper {
+.currencyWrapper {
     padding: 50px 0 50px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.currencyRateWrapper h1{
+.currencyWrapper h1{
     text-align: center;
     margin: 20px 0 30px 0;
     font-size: 2rem;
@@ -20,4 +20,17 @@
 .exchangeRatesWrapper div {
     font-size: 25px;
     margin: 15px 0;
+}
+
+/* media for mobile */
+@media(max-width: 650px){
+    .currencyWrapper h1{
+        font-size: 1.5rem;
+    }
+    .exchangeRatesWrapper {
+        min-width: 35vh;
+    }
+    .exchangeRatesWrapper div {
+        font-size: 15px;
+    }
 }

@@ -52,6 +52,5 @@
   "devDependencies": {
     "gh-pages": "^4.0.0",
     "typed-scss-modules": "^7.0.1"
-  },
-  "homepage": "https://hypno-coder.github.io/exchange-Rates"
+  }
 }

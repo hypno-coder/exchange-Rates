@@ -2,7 +2,6 @@ import React, {useState,useEffect, useCallback} from "react";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {fetchConvert} from "../../app/ActionCreators";
 import styles from './Form.module.css'
-import CN from "classnames";
 
 const Form = (): JSX.Element => {
 	const dispatch = useAppDispatch()
@@ -45,6 +44,7 @@ const Form = (): JSX.Element => {
 	useEffect(() => {
 		setFromCurrency(baseCurrency)
 		setToCurrency('USD')
+		//eslint-disable-next-line
 	}, [])
 
 	return (

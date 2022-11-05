@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {fetchConvert} from "../../app/ActionCreators";
 import styles from './Form.module.css'
 
+
 const Form = (): JSX.Element => {
 	const dispatch = useAppDispatch()
 	const {baseCurrency, currencies} = useAppSelector((state) => state.commonReducer)
@@ -40,7 +41,6 @@ const Form = (): JSX.Element => {
 		setToCurrency(fromCurrency)
 		event.preventDefault()
 	}
-
 	useEffect(() => {
 		setFromCurrency(baseCurrency)
 		setToCurrency('USD')

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useAppSelector, useActions} from "../../app/hooks";
 import styles from './BaseCurrency.module.css';
 
@@ -19,8 +19,13 @@ const BaseСurrency = (): JSX.Element => {
 		sessionStorage.setItem("baseCurrency", e.target.value)
 		setBaseCurrency(e.target.value)
 	}
-	let lang: string | null = sessionStorage.getItem("baseCurrency")
-	lang ? setBaseCurrency(lang) : sessionStorage.setItem("baseCurrency", pickCurrency())
+
+	useEffect(() => {
+		let lang: string | null = sessionStorage.getItem("baseCurrency")
+		lang || sessionStorage.setItem("baseCurrency", pickCurrency())
+		lang && setBaseCurrency(lang)
+		//eslint-disable-next-line
+	}, [])
 
 	return (
 				<form className={styles.currencyForm}>

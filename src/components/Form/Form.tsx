@@ -6,7 +6,7 @@ import styles from './Form.module.css'
 
 const Form = (): JSX.Element => {
 	const dispatch = useAppDispatch()
-	const {baseCurrency, currencies} = useAppSelector((state) => state.commonReducer)
+	const {currencies} = useAppSelector((state) => state.commonReducer)
 	const [amountData, setAmountData] = useState('')
 	const [fromCurrency, setFromCurrency] = useState('')
 	const [toCurrency, setToCurrency] = useState('')
@@ -42,7 +42,8 @@ const Form = (): JSX.Element => {
 		event.preventDefault()
 	}
 	useEffect(() => {
-		setFromCurrency(baseCurrency)
+		let baseCurrency: string | null = sessionStorage.getItem('baseCurrency')
+		setFromCurrency(baseCurrency!)
 		setToCurrency('USD')
 		//eslint-disable-next-line
 	}, [])
